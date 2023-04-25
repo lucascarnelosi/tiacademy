@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Desafio 2 - HTML/CSS</title>
+</head>
+<body>
+    <header>
+        <h1>ME ACHA!</h1>
+        <h2>ENCONTRE UM ENDEREÇO PELO NÚMERO DE CEP</h2>
+    </header>
+
+    <div id="icon">
+        <span class="material-icons">
+            travel_explore
+        </span>
+    </div>
+
+    <main>
+        <form method="post">
+            <div>
+                <label for="cep">CEP</label><br>
+                <input type="text" name="cep" id="cep" required>
+            </div>
+
+            <div>
+                <label for="street">Rua</label><br>
+                <input type="text" name="street" id="street" required>
+            </div>
+
+            <div>
+                <label for="neighborhood">Bairro</label><br>
+                <input type="text" name="neighborhood" id="neighborhood" required>
+            </div>
+
+            <div>
+                <label for="city">Cidade</label><br>
+                <input type="text" name="city" id="city" required>
+            </div>
+
+            <div>
+                <label for="state">Estado</label><br>
+                <input type="text" name="state" id="state" required>
+            </div>
+
+            <input id="btn" type="submit" value="BUSCAR">
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,106 @@
+:root {
+    --cor-background-header-footer: #212121;
+    --cor-destaque-nav: #F9A825;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 161px
+}
+
+header {
+    display: flex;
+    background-color: var(--cor-background-header-footer);
+    height: 40px;
+}
+
+header div#container {
+    width: 80vw;
+    color: #fff;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.2em;
+}
+
+header nav {
+    display: flex;
+    gap: 10px;
+}
+
+header nav a {
+    color: #fff;
+    width: 90px;
+    padding: 7px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+header nav a:hover {
+    background-color: #f00;
+    border-radius: 20px;
+}
+
+header nav a#home {
+    background-color: var(--cor-destaque-nav);
+    border-radius: 20px;
+}
+
+main {
+    display: flex;
+}
+
+main section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: auto;
+}
+
+main section div#text-content {
+    width: 300px;
+    padding: 40px 20px;
+    border-right: 2px dotted black;
+}
+
+main section div form input.txt {
+    display: block;
+    margin: 5px 0px 20px;
+    width: 25vw;
+    height: 40px;
+    border-radius: 5px;
+    border-color: rgba(0, 0, 0, 0.459);
+    padding: 5px;
+}
+
+main section div form button {
+    width: 100px;
+    background-color: #f00;
+    border: none;
+    border-radius: 15px;
+    padding: 8px;
+    color: #fff;
+    cursor: pointer;
+}
+
+footer {
+    height: 80px;
+    background-color: var(--cor-background-header-footer);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
