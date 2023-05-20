@@ -20,7 +20,9 @@ function meAcha() {
                 city.value = JSONFetchData[data]
             } else if (data == "uf") {
                 state.value = JSONFetchData[data]
-            }
+            } else if (data == "erro") {
+                alert("Esse CEP não existe! Tente novamente")
+            }         
         }
     }
     
