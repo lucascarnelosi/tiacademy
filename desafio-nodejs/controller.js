@@ -328,29 +328,6 @@ app.get('/listacompras', async (req, res) => {
         });
     });
 });
-app.get('/compra/:id', async (req, res) => {
-    if (! await compra.findByPk(req.params.id)) {
-        return res.status(400).json({
-            error: true,
-            message: "Compra não existe."
-        })
-    }
-
-    await compra.findByPk(req.params.id)
-    .then(buy => {
-        return res.json({
-            error: false,
-            buy
-        })
-    })
-    .catch(erro => {
-        return res.status(400).json({
-            error: true,
-            message: "Não foi possível conectar.",
-            erro
-        });
-    });
-});
 
 // editar
 app.put('/editarcliente/:id', async (req, res) => {
@@ -483,7 +460,7 @@ app.put('/editarpromocao/:id', async (req, res) => {
     });
 });
 
-app.put('/cartao/:id/editarcompra', async (req, res) => {
+app.put('/promocard/:id/editarcompra', async (req, res) => {
     const compraDados = {
         data: req.body.data,
         quantidade: req.body.quantidade,
@@ -631,16 +608,38 @@ app.delete('/excluirpromocao/:id', async (req, res) => {
     });
 });
 
-app.delete('/excluircompra/:id', async (req, res) => {
-    if (! await compra.findByPk(req.params.id)) {
+app.delete('/promocard/:id/excluircompra', async (req, res) => {
+    if (! await cartao.findByPk(req.params.id)) {
         return res.status(400).json({
             error: true,
-            message: "Compra não encontrada."
+            message: "Cartão não foi encontrado."
+        });
+    };
+    
+    if (! await promocao.findByPk(req.body.PromocaoId)) {
+        return res.status(400).json({
+            error: true,
+            message: "Promoção não foi encontrada."
         });
     };
 
+    if (! await compra.destroy({
+        where: Sequelize.and(
+            { CartaoId: req.params.id },
+            { PromocaoId: req.body.PromocaoId }
+        )
+    })) {
+        return res.status(400).json({
+            error: true,
+            message: "Compra não foi encontrada."
+        });
+    }
+
     await compra.destroy({
-        where: { id: req.params.id }
+        where: Sequelize.and(
+            { CartaoId: req.params.id },
+            { PromocaoId: req.body.PromocaoId }
+        )
     })
     .then(() => {
         return res.json({
