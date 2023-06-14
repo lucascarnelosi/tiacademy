@@ -38,26 +38,20 @@ app.post('/cliente', async (req, res) => {
     });
 });
 
-app.post('/cliente/:id/cartao', async (req, res) => {
-    const card = {
-        dataCartao: req.body.data,
-        validade: req.body.validade,
-        ClienteId: req.params.id
-    }
-
-    if (! await cliente.findByPk(req.params.id)) {
+app.post('/cartao', async (req, res) => {
+    if (! await cliente.findByPk(req.body.ClienteId)) {
         return res.status(400).json({
             error: true,
             message: 'Cliente não existe.'
         });
     };
 
-    await cartao.create(card)
-    .then(cardCli => {
+    await cartao.create(req.body)
+    .then(card => {
         return res.json({
             error: false,
             message: "Cartão criado com sucesso!",
-            cardCli
+            card
         });
     })
     .catch(erro => {
@@ -87,27 +81,20 @@ app.post('/empresa', async (req, res) => {
     });
 });
 
-app.post('/empresa/:id/promocao', async (req, res) => {
-    const promo = {
-        nome: req.body.nome,
-        descricao: req.body.descricao,
-        validade: req.body.validade,
-        EmpresaId: req.params.id
-    }
-
-    if (! await empresa.findByPk(req.params.id)) {
+app.post('/promocao', async (req, res) => {
+    if (! await empresa.findByPk(req.body.EmpresaId)) {
         return res.status(400).json({
             error: true,
             message: 'Empresa não existe.'
         });
     };
 
-    await promocao.create(promo)
-    .then(promoEmp => {
+    await promocao.create(req.body)
+    .then(promo => {
         return res.json({
             error: false,
             message: "Promoção criada com sucesso!",
-            promoEmp
+            promo
         });
     })
     .catch(erro => {
