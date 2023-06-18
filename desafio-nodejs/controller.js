@@ -354,12 +354,12 @@ app.put('/editarcartao/:id', async (req, res) => {
         });
     };
 
-    if (! await cliente.findByPk(req.body.ClienteId)) {
-        return res.status(400).json({
-            error: true,
-            message: "Cliente correspondente não encontrado."
-        });
-    };
+    // if (! await cliente.findByPk(req.body.ClienteId)) {
+    //     return res.status(400).json({
+    //         error: true,
+    //         message: "Cliente correspondente não encontrado."
+    //     });
+    // };
 
     await cartao.update(req.body, {
         where: {
@@ -419,12 +419,12 @@ app.put('/editarpromocao/:id', async (req, res) => {
         });
     };
 
-    if (! await empresa.findByPk(req.body.EmpresaId)) {
-        return res.status(400).json({
-            error: true,
-            message: "Empresa correspondente não encontrada."
-        });
-    };
+    // if (! await empresa.findByPk(req.body.EmpresaId)) {
+    //     return res.status(400).json({
+    //         error: true,
+    //         message: "Empresa correspondente não encontrada."
+    //     });
+    // };
 
     await promocao.update(req.body, {
         where: {
