@@ -26,7 +26,7 @@ export const ListarCliente = () => {
         })
     }
 
-    const delCliente = async(idCliente) => {
+    const DelCliente = async(idCliente) => {
         // console.log(idCliente)
 
         const headers = {
@@ -85,7 +85,7 @@ export const ListarCliente = () => {
                                 <td>{cli.nascimento}</td>
                                 <td className="text-center/">
                                     <Link to={`/editar-cliente/${cli.id}`} className="btn btn-outline-warning btn-sm">Editar</Link>
-                                    <span className="btn btn-outline-danger btn-sm" onClick={() => delCliente(cli.id)}>Excluir</span>
+                                    <span className="btn btn-outline-danger btn-sm" onClick={() => DelCliente(cli.id)}>Excluir</span>
                                 </td>
                             </tr>
                         ))}
