@@ -218,6 +218,31 @@ app.get('/cartao/:id', async (req, res) => {
         });
     });
 });
+app.get('/cliente/:id/cartoes', async (req, res) => {
+    if (! await cliente.findByPk(req.params.id)) {
+        return res.status(400).json({
+            error: true,
+            message: "Cliente não existe."
+        })
+    }
+    
+    await cartao.findAll({
+        where: {ClienteId: req.params.id}
+    })
+    .then(card => {
+        return res.json({
+            error: false,
+            card
+        })
+    })
+    .catch(erro => {
+        return res.status(400).json({
+            error: true,
+            message: "Não foi possível conectar.",
+            erro
+        });
+    });
+})
 
 app.get('/listaempresas', async (req, res) => {
     await empresa.findAll()
@@ -298,6 +323,31 @@ app.get('/promocao/:id', async (req, res) => {
         });
     });
 });
+app.get('/empresa/:id/promocoes', async (req, res) => {
+    if (! await empresa.findByPk(req.params.id)) {
+        return res.status(400).json({
+            error: true,
+            message: "Empresa não existe."
+        })
+    }
+    
+    await promocao.findAll({
+        where: {EmpresaId: req.params.id}
+    })
+    .then(promo => {
+        return res.json({
+            error: false,
+            promo
+        })
+    })
+    .catch(erro => {
+        return res.status(400).json({
+            error: true,
+            message: "Não foi possível conectar.",
+            erro
+        });
+    });
+})
 
 app.get('/listacompras', async (req, res) => {
     await compra.findAll()

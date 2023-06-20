@@ -28,6 +28,11 @@ export const Home = () => {
                             Promoção
                         </a>
                     </div>
+                    <div className="p-2">
+                        <a href="/listar-compras" className="btn btn-outline-success btn-sm">
+                            Compra
+                        </a>
+                    </div>
                 </div>
             </Container>
         </div>

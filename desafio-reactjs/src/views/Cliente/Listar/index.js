@@ -84,6 +84,7 @@ export const ListarCliente = () => {
                                 <td>{cli.uf}</td>
                                 <td>{cli.nascimento}</td>
                                 <td className="text-center/">
+                                    <Link to={`/listar-cartoes/${cli.id}`} className="btn btn-outline-info btn-sm">Consultar</Link>
                                     <Link to={`/editar-cliente/${cli.id}`} className="btn btn-outline-warning btn-sm">Editar</Link>
                                     <span className="btn btn-outline-danger btn-sm" onClick={() => DelCliente(cli.id)}>Excluir</span>
                                 </td>

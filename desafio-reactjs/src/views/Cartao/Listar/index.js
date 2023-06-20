@@ -82,7 +82,7 @@ export const ListarCartao = () => {
                                 <td>{card.dataCartao}</td>
                                 <td>{card.validade}</td>
                                 <td className="text-center/">
-                                    <Link to={"/listar-compras"} className="btn btn-outline-primary btn-sm">Consultar</Link>
+                                    <Link to={"/listar-compras"} className="btn btn-outline-info btn-sm">Consultar</Link>
                                     <Link to={`/editar-cartao/${card.id}`} className="btn btn-outline-warning btn-sm">Editar</Link>
                                     <span className="btn btn-outline-danger btn-sm" onClick={() => DelCartao(card.id)}>Excluir</span>
                                 </td>

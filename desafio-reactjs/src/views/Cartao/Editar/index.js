@@ -8,8 +8,8 @@ export const EditarCartao = () => {
     const params = useParams();
 
     const [id, setId] = useState(params.id)
-    const [clienteId, setClienteId] = useState();
-    const [data, setData] = useState()
+    const [clienteId, setClienteId] = useState()
+    const [date, setDate] = useState()
     const [validade, setValidade] = useState()
 
     const [status, setStatus] = useState({
@@ -24,7 +24,7 @@ export const EditarCartao = () => {
             'Content-type': 'application/json'
         }
 
-        await axios.put(`${api}/editarcartao/${id}`, {id, clienteId, data, validade}, {headers})
+        await axios.put(`${api}/editarcartao/${id}`, {id, clienteId, date, validade}, {headers})
         .then((response) => {
             setStatus({
                 type: 'success',
@@ -46,7 +46,7 @@ export const EditarCartao = () => {
             .then((response) => {
                 setId(response.data.card.id)
                 setClienteId(response.data.card.ClienteId)
-                setData(response.data.card.dataCartao)
+                setDate(response.data.card.dataCartao)
                 setValidade(response.data.card.validade)
             })
             .catch(() => {
@@ -88,17 +88,17 @@ export const EditarCartao = () => {
 
                     <FormGroup className="p-2">
                         <Label>ClienteId</Label>
-                        <Input name="ClienteId" type="number" disabled defaultValue={clienteId} />
+                        <Input type="number" name="ClienteId" disabled defaultValue={clienteId} />
                     </FormGroup>
 
                     <FormGroup className="p-2">
                         <Label>Data</Label>
-                        <Input name="dataCartao" type="date" value={data} onChange={e => setData(e.target.value)} />
+                        <Input type="date" name="dataCartao" value={date} onChange={e => setDate(e.target.value)} />
                     </FormGroup>
 
                     <FormGroup className="p-2">
                         <Label>Validade</Label>
-                        <Input name="validade" type="date" value={validade} onChange={e => setValidade(e.target.value)} />
+                        <Input type="date" name="validade" value={validade} onChange={e => setValidade(e.target.value)} />
                     </FormGroup>
                     
                     <Button className="m-1" type="submit" outline color="warning">

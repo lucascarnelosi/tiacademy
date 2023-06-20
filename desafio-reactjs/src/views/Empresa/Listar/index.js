@@ -80,7 +80,7 @@ export const ListarEmpresa = () => {
                                 <td>{emp.nome}</td>
                                 <td>{emp.dataAdesao}</td>
                                 <td className="text-center/">
-                                    <Link to={"/listar-promocao"} className="btn btn-outline-primary btn-sm">Consultar</Link>
+                                    <Link to={`/listar-promocoes/${emp.id}`} className="btn btn-outline-info btn-sm">Consultar</Link>
                                     <Link to={`/editar-empresa/${emp.id}`} className="btn btn-outline-warning btn-sm">Editar</Link>
                                     <span className="btn btn-outline-danger btn-sm" onClick={() => DelEmpresa(emp.id)}>Excluir</span>
                                 </td>

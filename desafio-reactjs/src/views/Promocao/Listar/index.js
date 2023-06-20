@@ -84,6 +84,7 @@ export const ListarPromocao = () => {
                                 <td>{promo.validade}</td>
                                 <td>{promo.EmpresaId}</td>
                                 <td className="text-center/">
+                                    <Link to={"/listar-compras"} className="btn btn-outline-info btn-sm">Consultar</Link>
                                     <Link to={`/editar-promocao/${promo.id}`} className="btn btn-outline-warning btn-sm">Editar</Link>
                                     <span className="btn btn-outline-danger btn-sm" onClick={() => DelPromocao(promo.id)}>Excluir</span>
                                 </td>
