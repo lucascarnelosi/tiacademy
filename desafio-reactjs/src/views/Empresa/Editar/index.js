@@ -9,7 +9,7 @@ export const EditarEmpresa = () => {
 
     const [id, setId] = useState(params.id)
     const [nome, setNome] = useState();
-    const [data, setData] = useState()
+    const [dataAdesao, setDataAdesao] = useState()
 
     const [status, setStatus] = useState({
         type: '',
@@ -23,7 +23,7 @@ export const EditarEmpresa = () => {
             'Content-type': 'application/json'
         }
 
-        await axios.put(`${api}/editarempresa/${id}`, {id, nome, data}, {headers})
+        await axios.put(`${api}/editarempresa/${id}`, {id, nome, dataAdesao}, {headers})
         .then((response) => {
             setStatus({
                 type: 'success',
@@ -45,7 +45,7 @@ export const EditarEmpresa = () => {
             .then((response) => {
                 setId(response.data.emp.id)
                 setNome(response.data.emp.nome)
-                setData(response.data.emp.dataAdesao)
+                setDataAdesao(response.data.emp.dataAdesao)
             })
             .catch(() => {
                 console.log("Erro: sem conexão com a API.")
@@ -91,7 +91,7 @@ export const EditarEmpresa = () => {
 
                     <FormGroup className="p-2">
                         <Label>Data de Adesão</Label>
-                        <Input name="dataAdesao" type="date" value={data} onChange={e => setData(e.target.value)} />
+                        <Input name="dataAdesao" type="date" value={dataAdesao} onChange={e => setDataAdesao(e.target.value)} />
                     </FormGroup>
                     
                     <Button className="m-1" type="submit" outline color="warning">

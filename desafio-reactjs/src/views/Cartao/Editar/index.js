@@ -9,7 +9,7 @@ export const EditarCartao = () => {
 
     const [id, setId] = useState(params.id)
     const [clienteId, setClienteId] = useState()
-    const [date, setDate] = useState()
+    const [dataCartao, setDataCartao] = useState()
     const [validade, setValidade] = useState()
 
     const [status, setStatus] = useState({
@@ -24,7 +24,7 @@ export const EditarCartao = () => {
             'Content-type': 'application/json'
         }
 
-        await axios.put(`${api}/editarcartao/${id}`, {id, clienteId, date, validade}, {headers})
+        await axios.put(`${api}/editarcartao/${id}`, {id, clienteId, dataCartao, validade}, {headers})
         .then((response) => {
             setStatus({
                 type: 'success',
@@ -46,7 +46,7 @@ export const EditarCartao = () => {
             .then((response) => {
                 setId(response.data.card.id)
                 setClienteId(response.data.card.ClienteId)
-                setDate(response.data.card.dataCartao)
+                setDataCartao(response.data.card.dataCartao)
                 setValidade(response.data.card.validade)
             })
             .catch(() => {
@@ -93,7 +93,7 @@ export const EditarCartao = () => {
 
                     <FormGroup className="p-2">
                         <Label>Data</Label>
-                        <Input type="date" name="dataCartao" value={date} onChange={e => setDate(e.target.value)} />
+                        <Input type="date" name="dataCartao" value={dataCartao} onChange={e => setDataCartao(e.target.value)} />
                     </FormGroup>
 
                     <FormGroup className="p-2">
